@@ -15,12 +15,12 @@
         console.log($(this).val(), 'state value');
         if ($(this).val()) {
           webDB.execute(
-            'SELECT DISTINCT city FROM zips ' +
-            'ORDER BY city DESC;',
+            'SELECT DISTINCT city FROM zips WHERE state="' + $(this).val() + '"' +
+            ' ORDER BY city DESC;',
             function(rows){
               if (rows.length){
                 rows.filter(function(dataEntry) {
-                  return ($(this).val() === dataEntry.state);
+                  return $(this).val() === dataEntry.state;
                 })
                 .forEach(function(a){
                   $('#city-select').append('<option>' + a.city + '</option>');
