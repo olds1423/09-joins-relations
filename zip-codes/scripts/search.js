@@ -12,6 +12,7 @@
         });
       }
       $('#state-select').on('change', function() {
+        $('#city-select').find('option').remove().end();
         console.log($(this).val(), 'state value');
         if ($(this).val()) {
           webDB.execute(
