@@ -12,6 +12,7 @@
         });
       }
       $('#state-select').on('change', function() {
+        $('#city-select').find('option').remove().end();
         console.log($(this).val(), 'state value');
         if ($(this).val()) {
           webDB.execute(
@@ -34,4 +35,11 @@
   );
   // TODO: Write the code to populate your filters, and enable the search queries here in search.js
   // TODO: You will also interact with the map.js file here
+  // map = new google.maps.Map(document.getElementById("map"), {...});
+
+
+
+  // Wire up the zip code search to pull data from the DB and log matching objects to the console (while debugging).
+  //   - You will need to write your SQL queries for a direct search of the db using the zip.
+  //   - You have the `webDB.execute()` method from the blog available to you for accessing the DB table for this assignment.
 })(window);
