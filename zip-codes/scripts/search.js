@@ -12,19 +12,24 @@
         });
       }
       $('#state-select').on('change', function() {
-        $('#city-select').find('option').remove().end();
+        var latitude = 19.8968;
+        var longitude = 155.5828;
+        var newMap = {lat: latitude, lng: longitude};
+        initMap(newMap);
+
+        $('#city-select').empty();
         console.log($(this).val(), 'state value');
+        console.log($(this).val());
         if ($(this).val()) {
           webDB.execute(
             'SELECT DISTINCT city FROM zips WHERE state="' + $(this).val() + '"' +
             ' ORDER BY city DESC;',
             function(rows){
               if (rows.length){
-                rows.filter(function(dataEntry) {
-                  return $(this).val() === dataEntry.state;
-                })
-                .forEach(function(a){
+                console.log($(this).val(), 'state value');
+                rows.forEach(function(a){
                   $('#city-select').append('<option>' + a.city + '</option>');
+
                 });
               }
             }
